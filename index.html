@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Chenlu Wang — Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22%23111%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#eef0ea; --ink:#111b15; --mute:#55605a; --line:#cfd4cb; --ph:#dde2d8; --ok:#123524;
+  --forest:#123524; --on-forest:#eef0ea; --mute-forest:#b6c7bc; --apricot:#f4b28a;
+  --font:"Instrument Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  --pad:clamp(20px,4vw,56px); --gap:clamp(16px,2.4vw,32px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+img{display:block;max-width:100%}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+.label{font-size:14px;color:var(--mute)}
+
+/* header */
+header{position:sticky;top:0;z-index:5;background:var(--bg)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.brand{font-weight:500}
+nav{display:flex;gap:32px;font-size:14px}
+nav a,.links a,.back{transition:opacity .2s}
+nav a:hover,.links a:hover,.back:hover{opacity:.45}
+
+/* hero */
+.hero{padding:clamp(72px,13vw,176px) 0 clamp(56px,8vw,112px)}
+.hero h1{font-weight:400;font-size:clamp(38px,7.4vw,112px);line-height:1.04;letter-spacing:-.045em;max-width:12.5em}
+.hero-foot{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);margin-top:clamp(48px,8vw,120px);align-items:end}
+.hero-foot .l{grid-column:1/6;display:flex;align-items:center;gap:10px}
+.hero-foot .r{grid-column:7/13;font-size:clamp(17px,1.5vw,20px);max-width:30em}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+@media(max-width:760px){.hero-foot{display:block}.hero-foot .r{margin-top:28px}}
+
+/* sections */
+section{padding:clamp(64px,9vw,128px) 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;margin-bottom:clamp(40px,6vw,80px)}
+
+/* work */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gap);row-gap:clamp(56px,8vw,120px)}
+.work{display:block}
+.work.w{grid-column:span 7}
+.work.n{grid-column:span 5;margin-top:clamp(0px,10vw,150px)}
+.cover{overflow:hidden;background:var(--ph)}
+.w .cover{aspect-ratio:4/3}
+.n .cover{aspect-ratio:4/5}
+.cover img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.work:hover .cover img{transform:scale(1.025)}
+.cap{display:flex;justify-content:space-between;gap:16px;margin-top:18px;font-size:19px;font-weight:500;letter-spacing:-.01em}
+.cap span{color:var(--mute);font-weight:400;font-size:15px}
+.work p{color:var(--mute);font-size:15px;margin-top:2px;max-width:28em}
+@media(max-width:760px){.work.w,.work.n{grid-column:1/-1;margin-top:0}.n .cover{aspect-ratio:4/3}}
+
+/* about + experience */
+.cols{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+.cols>.label{grid-column:1/4}
+.cols>.body{grid-column:4/13}
+@media(max-width:760px){.cols>.label,.cols>.body{grid-column:1/-1}.cols>.label{margin-bottom:24px}}
+.about{font-size:clamp(22px,2.7vw,36px);line-height:1.3;letter-spacing:-.025em;max-width:24em}
+.exps{margin-top:clamp(48px,7vw,96px)}
+.exp{display:grid;grid-template-columns:170px 1fr 1.2fr;gap:var(--gap);padding:24px 0;border-top:1px solid var(--line)}
+.exp:last-child{border-bottom:1px solid var(--line)}
+.exp .when{color:var(--mute);font-size:15px}
+.exp h3{font-size:18px;font-weight:500;letter-spacing:-.01em}
+.exp .org{color:var(--mute);font-size:15px}
+.exp p{color:var(--mute);font-size:15px}
+@media(max-width:760px){.exp{grid-template-columns:1fr;gap:4px}.exp p{margin-top:8px}}
+
+/* contact */
+.mail{display:inline-block;font-size:clamp(30px,7.2vw,108px);letter-spacing:-.045em;line-height:1.05;transition:opacity .2s;word-break:break-word}
+.mail:hover{opacity:.45}
+.links{margin-top:clamp(28px,4vw,48px);display:flex;gap:28px;flex-wrap:wrap;font-size:15px}
+footer{display:flex;justify-content:space-between;padding:28px 0 44px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+
+/* project page */
+.back{display:inline-block;margin-top:24px;font-size:14px}
+.p-head{padding:clamp(56px,9vw,128px) 0 clamp(40px,6vw,80px)}
+.p-head h1{font-weight:400;font-size:clamp(40px,8vw,120px);line-height:1.02;letter-spacing:-.045em}
+.p-head .tag{margin-top:28px;font-size:clamp(18px,1.8vw,22px);color:var(--mute);max-width:30em}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);padding:24px 0;border-top:1px solid var(--line);margin-bottom:clamp(32px,4vw,56px)}
+.meta dt{color:var(--mute);font-size:13px}
+.meta dd{font-size:15px}
+@media(max-width:760px){.meta{grid-template-columns:1fr 1fr}}
+.hero-img{aspect-ratio:16/9;background:var(--ph);overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.block{padding:clamp(64px,9vw,128px) 0 0}
+.block .body p{font-size:clamp(18px,1.7vw,21px);line-height:1.65;max-width:34em}
+.block .body p+p{margin-top:1.1em}
+.mocks{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:clamp(32px,4vw,56px)}
+.mocks .m:nth-child(3n+1){grid-column:1/-1}
+.mocks .m{background:var(--ph);overflow:hidden;min-height:200px}
+.mocks img{width:100%;height:auto}
+@media(max-width:760px){.mocks{grid-template-columns:1fr}}
+.ph{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:200px;padding:16px;color:var(--mute);font-size:13px;text-align:center}
+.next{margin-top:clamp(72px,10vw,144px)}
+.next a{display:block;font-size:clamp(30px,6vw,88px);letter-spacing:-.045em;line-height:1.05;transition:opacity .2s}
+.next a:hover{opacity:.45}
+/* colour bands */
+.band{border-top:0}
+.forest{background:var(--forest);color:var(--on-forest)}
+.forest .label,.forest .exp .when,.forest .exp .org,.forest .exp p{color:var(--mute-forest)}
+.forest .exp{border-color:rgba(238,240,234,.22)}
+.forest a:focus-visible{outline-color:var(--apricot)}
+.forest .about{color:var(--on-forest)}
+.apricot{background:var(--apricot);color:#111b15}
+.apricot .label{color:rgba(17,27,21,.78)}
+.apricot .links a{color:#111b15}
+/* groups + life */
+.group+.group{margin-top:clamp(80px,11vw,160px)}
+.g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:clamp(28px,4vw,56px)}
+.g-head h3{font-weight:400;font-size:clamp(28px,4.4vw,60px);letter-spacing:-.04em;line-height:1}
+.work.w2{grid-column:4/span 7}
+.w2 .cover{aspect-ratio:4/3}
+.at{margin-top:clamp(32px,5vw,64px);display:flex;gap:clamp(20px,3vw,40px);flex-wrap:wrap;font-size:clamp(18px,2vw,26px);letter-spacing:-.01em}
+.life{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:clamp(40px,6vw,80px)}
+.life figure{margin:0}
+.lp{aspect-ratio:4/5;background:var(--ph);overflow:hidden}
+.lp img{width:100%;height:100%;object-fit:cover}
+.life figcaption{margin-top:12px;font-weight:500}
+.life figcaption span{display:block;color:var(--mute);font-weight:400;font-size:14px}
+@media(max-width:760px){.work.w2{grid-column:1/-1}.life{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#">Chenlu Wang</a>
+  <nav><a href="#work">Work</a><a href="#about">About</a><a href="#life">Life</a><a href="#contact">Contact</a></nav>
+</div></header>
+<main id="app"></main>
+
+<script>
+/* ============ EDIT YOUR CONTENT HERE ============ */
+const PROFILE = {
+  name: "Chenlu Wang",
+  headline: "I am Chenlu Wang, a product designer who merges the divided in user experience.",
+  companies: ["google", "tiktok", "sensetime"],
+  about: "Write 2–3 sentences here: your background, what you’re good at, and how you work.",
+  life: "Away from the screen, I make ceramics, climb boulders, hang out with my pets, and travel whenever I can.",
+  email: "hello@example.com",
+  links: [
+    { label: "LinkedIn", href: "https://linkedin.com/in/yourname" },
+    { label: "Dribbble", href: "https://dribbble.com/yourname" }
+  ]
+};
+
+const EXPERIENCE = [
+  { when: "20XX — Present", role: "Product Designer", org: "Google · Team A", desc: "One sentence on your responsibilities and key outcomes." },
+  { when: "20XX — 20XX", role: "Product Designer", org: "Google · Team B", desc: "One sentence on your responsibilities and key outcomes." },
+  { when: "20XX — 20XX", role: "Product Designer", org: "Google · Team C", desc: "One sentence on your responsibilities and key outcomes." },
+  { when: "20XX — 20XX", role: "Product Designer", org: "TikTok", desc: "One sentence on your responsibilities and key outcomes." },
+  { when: "20XX — 20XX", role: "Product Designer", org: "SenseTime", desc: "One sentence on your responsibilities and key outcomes." }
+];
+
+/* Images go in the images/ folder using the filenames below. Missing images show a grey placeholder. */
+/* category must be exactly "Enterprise" or "Consumer". Add or remove entries in mocks freely. */
+const PROJECTS = [
+  {
+    id: "project-1", category: "Enterprise", title: "CRM", org: "Google Customer Engagement",
+    tagline: "One sentence on what this project is about.",
+    role: "Product Designer", duration: "3 months", tools: "Figma",
+    cover: "crm/cover.jpg",
+    problem: ["Describe the user problem or business challenge here.", "Optional second paragraph: how you found and validated the problem."],
+    solution: ["Describe your approach and key design decisions here.", "Optional second paragraph: the outcome or metrics."],
+    mocks: ["crm/mock1.jpg", "crm/mock2.jpg", "crm/mock3.jpg"]
+  },
+  {
+    id: "project-2", category: "Consumer", title: "Creator Partnerships", org: "Google Ads",
+    tagline: "One sentence on what this project is about.",
+    role: "Product Designer", duration: "3 months", tools: "Figma",
+    cover: "creator-partnerships/cover.jpg",
+    problem: ["Describe the user problem or business challenge here.", "Optional second paragraph: how you found and validated the problem."],
+    solution: ["Describe your approach and key design decisions here.", "Optional second paragraph: the outcome or metrics."],
+    mocks: ["creator-partnerships/mock1.jpg", "creator-partnerships/mock2.jpg", "creator-partnerships/mock3.jpg"]
+  },
+  {
+    id: "project-3", category: "Enterprise", title: "OSCAL Builder", org: "Google Cloud",
+    tagline: "One sentence on what this project is about.",
+    role: "Product Designer", duration: "3 months", tools: "Figma",
+    cover: "oscal-builder/cover.jpg",
+    problem: ["Describe the user problem or business challenge here.", "Optional second paragraph: how you found and validated the problem."],
+    solution: ["Describe your approach and key design decisions here.", "Optional second paragraph: the outcome or metrics."],
+    mocks: ["oscal-builder/mock1.jpg", "oscal-builder/mock2.jpg", "oscal-builder/mock3.jpg"]
+  },
+  {
+    id: "project-4", category: "Consumer", title: "Ads Format", org: "Google Ads",
+    tagline: "One sentence on what this project is about.",
+    role: "Product Designer", duration: "3 months", tools: "Figma",
+    cover: "ads-format/cover.jpg",
+    problem: ["Describe the user problem or business challenge here.", "Optional second paragraph: how you found and validated the problem."],
+    solution: ["Describe your approach and key design decisions here.", "Optional second paragraph: the outcome or metrics."],
+    mocks: ["ads-format/mock1.jpg", "ads-format/mock2.jpg", "ads-format/mock3.jpg"]
+  },
+  {
+    id: "project-5", category: "Enterprise", title: "IOC", org: "SenseTime",
+    tagline: "One sentence on what this project is about.",
+    role: "Product Designer", duration: "3 months", tools: "Figma",
+    cover: "ioc/cover.jpg",
+    problem: ["Describe the user problem or business challenge here.", "Optional second paragraph: how you found and validated the problem."],
+    solution: ["Describe your approach and key design decisions here.", "Optional second paragraph: the outcome or metrics."],
+    mocks: ["ioc/mock1.jpg", "ioc/mock2.jpg", "ioc/mock3.jpg"]
+  },
+  {
+    id: "project-6", category: "Consumer", title: "Dreaming Elf", org: "TikTok",
+    tagline: "One sentence on what this project is about.",
+    role: "Product Designer", duration: "3 months", tools: "Figma",
+    cover: "dreaming-elf/cover.jpg",
+    problem: ["Describe the user problem or business challenge here.", "Optional second paragraph: how you found and validated the problem."],
+    solution: ["Describe your approach and key design decisions here.", "Optional second paragraph: the outcome or metrics."],
+    mocks: ["dreaming-elf/mock1.jpg", "dreaming-elf/mock2.jpg", "dreaming-elf/mock3.jpg"]
+  }
+];
+
+const LIFE = [
+  { title: "Ceramic arts", note: "Add a line about it.", img: "life/ceramics.jpg" },
+  { title: "Bouldering", note: "Add a line about it.", img: "life/bouldering.jpg" },
+  { title: "Pets", note: "Add a line about it.", img: "life/pets.jpg" },
+  { title: "Traveling", note: "Add a line about it.", img: "life/traveling.jpg" }
+];
+/* ============ PAGE LOGIC, USUALLY NO NEED TO EDIT ============ */
+
+const $app = document.getElementById("app");
+const img = src => `<img src="images/${src}" alt="" loading="lazy" onerror="this.outerHTML='<div class=ph>images/${src}</div>'">`;
+const paras = a => a.map(t => `<p>${t}</p>`).join("");
+let view = "";
+
+function workGroup(cat) {
+  const items = PROJECTS.filter(p => p.category === cat), cls = ["w", "n", "w2"];
+  return `<div class="group">
+    <div class="g-head"><h3>${cat}</h3><span class="label">${items.length} projects</span></div>
+    <div class="grid">${items.map((p, i) => `
+      <a class="work ${cls[i % 3]}" href="#${p.id}">
+        <div class="cover">${img(p.cover)}</div>
+        <div class="cap">${p.title}<span>${p.org}</span></div>
+        <p>${p.tagline}</p>
+      </a>`).join("")}</div>
+  </div>`;
+}
+
+function home() {
+  $app.innerHTML = `
+  <div class="wrap">
+    <div class="hero">
+      <h1>${PROFILE.headline}</h1>
+      <p class="at">${PROFILE.companies.map(c => `<span>@${c}</span>`).join("")}</p>
+    </div>
+  </div>
+  <section id="work"><div class="wrap">
+    <div class="sec-head label"><span>Selected work</span><span>${PROJECTS.length} projects</span></div>
+    ${workGroup("Enterprise")}${workGroup("Consumer")}
+  </div></section>
+  <section id="about" class="band forest"><div class="wrap"><div class="cols">
+    <div class="label">About</div>
+    <div class="body">
+      <p class="about">${PROFILE.about}</p>
+      <div class="exps">${EXPERIENCE.map(e => `
+        <div class="exp"><div class="when">${e.when}</div>
+        <div><h3>${e.role}</h3><div class="org">${e.org}</div></div>
+        <p>${e.desc}</p></div>`).join("")}
+      </div>
+    </div></div></div></section>
+  <section id="life"><div class="wrap"><div class="cols">
+    <div class="label">Out of 9–5</div>
+    <div class="body">
+      <p class="about">${PROFILE.life}</p>
+      <div class="life">${LIFE.map(l => `
+        <figure><div class="lp">${img(l.img)}</div><figcaption>${l.title}<span>${l.note}</span></figcaption></figure>`).join("")}
+      </div>
+    </div></div></div></section>
+  <section id="contact" class="band apricot"><div class="wrap">
+    <div class="sec-head label"><span>Contact</span></div>
+    <a class="mail" href="mailto:${PROFILE.email}">${PROFILE.email}</a>
+    <div class="links">${PROFILE.links.map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join("")}</div>
+  </div></section>
+  <div class="wrap"><footer><span>© 2026 ${PROFILE.name}</span><a href="#">Back to top</a></footer></div>`;
+}
+
+function project(id) {
+  const i = PROJECTS.findIndex(p => p.id === id);
+  if (i < 0) return home();
+  const p = PROJECTS[i], n = PROJECTS[(i + 1) % PROJECTS.length];
+  $app.innerHTML = `
+  <div class="wrap">
+    <a class="back" href="#work">← All work</a>
+    <div class="p-head"><h1>${p.title}</h1><p class="tag">${p.tagline}</p></div>
+    <dl class="meta">
+      <div><dt>Company</dt><dd>${p.org}</dd></div>
+      <div><dt>Role</dt><dd>${p.role}</dd></div>
+      <div><dt>Duration</dt><dd>${p.duration}</dd></div>
+      <div><dt>Tools</dt><dd>${p.tools}</dd></div>
+    </dl>
+    <div class="hero-img">${img(p.cover)}</div>
+    <div class="block"><div class="cols"><div class="label">Problem</div><div class="body">${paras(p.problem)}</div></div></div>
+    <div class="block"><div class="cols"><div class="label">Solution</div><div class="body">${paras(p.solution)}</div></div></div>
+    <div class="block"><div class="cols"><div class="label">Mocks</div></div>
+      <div class="mocks">${p.mocks.map(m => `<div class="m">${img(m)}</div>`).join("")}</div></div>
+  </div>
+  <section class="band forest next"><div class="wrap"><div class="label" style="margin-bottom:16px">Next project</div><a href="#${n.id}">${n.title}</a></div></section>
+  <div class="wrap"><footer><span>© 2026 ${PROFILE.name}</span><a href="#">Home</a></footer></div>`;
+}
+
+function route() {
+  const h = location.hash.slice(1);
+  if (h.startsWith("project-")) {
+    if (view !== h) { project(h); view = h; window.scrollTo(0, 0); }
+    document.title = PROFILE.name + " — " + (PROJECTS.find(p => p.id === h) || {}).title;
+    return;
+  }
+  document.title = PROFILE.name + " — Portfolio";
+  if (view !== "home") { home(); view = "home"; window.scrollTo(0, 0); }
+  const el = h && document.getElementById(h);
+  if (el) el.scrollIntoView();
+  else if (!h) window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
