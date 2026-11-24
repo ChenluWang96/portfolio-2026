@@ -133,6 +133,7 @@ footer{display:flex;justify-content:space-between;padding:28px 0 44px;border-top
 @media(max-width:760px){.work.w2{grid-column:1/-1}.life{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 <!-- passcode -->
@@ -169,13 +170,14 @@ footer{display:flex;justify-content:space-between;padding:28px 0 44px;border-top
 
   // check
   window.addEventListener('DOMContentLoaded', () => {
-    // hide
-    document.body.style.overflow = 'hidden';
-    
     // check if unlocked
     if (localStorage.getItem('portfolio_unlocked') === 'true') {
       document.getElementById('passcode-screen').style.display = 'none';
+      document.getElementById('portfolio-content').style.display = 'block';
       document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+      document.getElementById('portfolio-content').style.display = 'none';
     }
   });
 
@@ -195,6 +197,7 @@ footer{display:flex;justify-content:space-between;padding:28px 0 44px;border-top
       
       setTimeout(() => {
         screen.style.display = 'none';
+        document.getElementById('portfolio-content').style.display = 'block';
         document.body.style.overflow = 'auto';
       }, 500);
     } else {
@@ -217,11 +220,14 @@ footer{display:flex;justify-content:space-between;padding:28px 0 44px;border-top
 </script>
 <!-- passcode end -->
 
+<div id="portfolio-content" style="display: none;">
 <header><div class="wrap">
   <a class="brand" href="#">Chenlu Wang</a>
   <nav><a href="#work">Work</a><a href="#about">About</a><a href="#life">Life</a><a href="#contact">Contact</a></nav>
 </div></header>
-<main id="app"></main>
+<main id="app">
+</main>
+</div>
 
 <script>
 /* ============ EDIT YOUR CONTENT HERE ============ */
@@ -314,7 +320,10 @@ const LIFE = [
 /* ============ PAGE LOGIC, USUALLY NO NEED TO EDIT ============ */
 
 const $app = document.getElementById("app");
-const img = src => `<img src="images/${src}" alt="" loading="lazy" onerror="this.outerHTML='<div class=ph>images/${src}</div>'">`;
+const img = src => {
+  const finalSrc = (src.startsWith('Portfolio/') || src.startsWith('images/') || src.startsWith('http')) ? src : `images/${src}`;
+  return `<img src="${finalSrc}" alt="" loading="lazy" onerror="this.outerHTML='<div class=ph>${finalSrc}</div>'">`;
+};
 const paras = a => a.map(t => `<p>${t}</p>`).join("");
 let view = "";
 
@@ -411,5 +420,3 @@ route();
 </script>
 </body>
 </html>
-
-
